@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Desafios</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body style="text-align: center">
+
+    <div id="cabecalho">
+        <h1>UniOpet</h1>
+        <h2>Desenvolvimento Web Responsivo</h2>
+        <p1>Professor: Matheus Vieira</p1> <br/>
+        <p1>Aluno: Marcelo Seiji</p1>
+    </div>
+
+    <h2>Desafios</h2>
+   
+    <input type="text" id="principalVisor" placeholder="Digite aqui uma String"> <br/><br/>
+
+    <p>Inverter uma String</p>
+    <input type="text" id="inverterVisor" placeholder="String Invertida" size="" disabled class="iptdis"> <br/>
+    <button type="button" id="btnInverter">Inverter</button><br/><br/>
+    
+
+    <p>Descobrir se é um palíndromo</p>
+    <input type="text" id="palindromoMostrador" placeholder="Palindometria" disabled class="iptdis"> <br/>
+    <button type="button" id="btnPalindromo">Palíndromo?</button>  
+    <p id="verificadorVerdade"></p>
+    <p id="verificadorVerdade2"></p>
+    <p id="verificadorVerdade3"></p><br/>
+
+    <p>Descobrir o algarismo mais recorrente</p>
+    <input type="text" id="recorrenteVisor" placeholder="Algarismo Mais Recorrente" disabled size="27" class="iptdis"><br/>
+    <button type="button" id="btnRecorrente">Algarismo Mais Recorrente</button><br/><br/><br/>
+
+    <button type="button" id="btnReset" id="btnReset"></button>
+    <p id="textRecarrega">Recarrega a Página</p><br/>
+
+    <script>
+        i = 0;
+        temp = 0;
+        temp2 = 0;
+        elementoCode = [];
+        caractereRec = [];
+        caractereRecFim = [];
+        btnInverter.addEventListener("click", inverter)
+        btnPalindromo.addEventListener("click", palindromo)
+        btnRecorrente.addEventListener("click", maisRecorrente)
+        btnReset.addEventListener("click", carregaPagina)
+
+        function carregaPagina() {
+            location.reload();
+        }
+        function inverter() {
+            strDigi = document.getElementById("principalVisor").value;
+            strVetor = strDigi.split("");
+            strInvertida = strVetor.reverse();
+            strFinal = strInvertida.join("");
+            document.getElementById("inverterVisor").value = strFinal;
+            document.getElementById("inverterVisor").size = strInvertida;
+        }
+        function parar() {
+            break;
+        }
+        function palindromo() {
+            strDigi = document.getElementById("principalVisor").value;
+            strVetor = strDigi.split("");
+            strNatural = strDigi.split("");
+            strInvertida = strVetor.reverse();
+            strFinal = strInvertida.join("");
+            i = 0;
+            c = 1;
+            v = 1;
+            if (strDigi.length == 1) {
+                simPalindromo();
+                parar();
+            }
+            if (strDigi == "") {
+                alert("Favor Digitar uma String");
+                parar();
+            }
+            if (strNatural[i] != strNatural[strNatural.length-c]) {
+                naoPalindromo();
+            }
+            if (strNatural[i] == strNatural[strNatural.length-c]) {
+                do {
+                    i++;
+                    c++;
+                    v++;
+                    if (strNatural[i] != strNatural[strNatural.length-c]) {
+                    naoPalindromo();
+                    }
+                }
+                while (i+1 != strNatural.length);
+                simPalindromo();
+            }
+        }
+        function naoPalindromo() {
+            document.getElementById("palindromoMostrador").value = "não É PALÍNDROMO";
+            parar();
+        }
+        function simPalindromo() {
+            document.getElementById("palindromoMostrador").value = "É PALÍNDROMO";
+        }
+        function maisRecorrente() {
+            strAlfa =  [ a=["a"], b=["b"], c=["c"], d=["d"], e=["e"], f=["f"], g=["g"], h=["h"], i=["i"], j=["j"], k=["k"], l=["l"], m=["m"], n=["n"], o=["o"], p=["p"], q=["q"], r=["r"], s=["s"], t=["t"], u=["u"], v=["v"], x=["x"], y=["y"], z=["z"] ];
+            strDigi = document.getElementById("principalVisor").value.toLowerCase();
+            strVetor = strDigi.split("");
+            max = -Infinity;
+
+            for (i = 0; i < strVetor.length; i++) {
+                if (strVetor[i] == "a") {strAlfa[0].push("a")};
+                if (strVetor[i] == "b") {strAlfa[1].push("b")};
+                if (strVetor[i] == "c") {strAlfa[2].push("c")};
+                if (strVetor[i] == "d") {strAlfa[3].push("d")};
+                if (strVetor[i] == "e") {strAlfa[4].push("e")};
+                if (strVetor[i] == "f") {strAlfa[5].push("f")};
+                if (strVetor[i] == "g") {strAlfa[6].push("g")};
+                if (strVetor[i] == "h") {strAlfa[7].push("h")};
+                if (strVetor[i] == "i") {strAlfa[8].push("i")};
+                if (strVetor[i] == "j") {strAlfa[9].push("j")};
+                if (strVetor[i] == "k") {strAlfa[10].push("k")};
+                if (strVetor[i] == "l") {strAlfa[11].push("l")};
+                if (strVetor[i] == "m") {strAlfa[12].push("m")};
+                if (strVetor[i] == "n") {strAlfa[13].push("n")};
+                if (strVetor[i] == "o") {strAlfa[14].push("o")};
+                if (strVetor[i] == "p") {strAlfa[15].push("p")};
+                if (strVetor[i] == "q") {strAlfa[16].push("q")};
+                if (strVetor[i] == "r") {strAlfa[17].push("r")};
+                if (strVetor[i] == "s") {strAlfa[18].push("s")};
+                if (strVetor[i] == "t") {strAlfa[19].push("t")};
+                if (strVetor[i] == "u") {strAlfa[20].push("u")};
+                if (strVetor[i] == "v") {strAlfa[21].push("v")};
+                if (strVetor[i] == "x") {strAlfa[22].push("x")};
+                if (strVetor[i] == "y") {strAlfa[23].push("y")};
+                if (strVetor[i] == "z") {strAlfa[24].push("z")};
+                if (strVetor[i] == "") {strAlfa[24].push("z")};
+            }
+        
+            for (i = 0; i < strAlfa.length; i++) {
+                if (strAlfa[i].length >= temp) {
+                    temp = strAlfa[i].length;
+                    caractereRec.push(strAlfa[i]);
+                }
+            }
+            for (i = 0; i < caractereRec.length; i++) {
+                if (caractereRec[i].length == temp) {
+                    caractereRecFim.push(caractereRec[i][0]);
+                }
+            }
+            strVetor.sort();
+            for (i = 0; i < caractereRecFim.length; i++) {
+                if (caractereRecFim.length < strVetor.length) {
+                    carRecorrente();
+                }
+                if ((caractereRecFim[i] == strVetor[i]) == false ) {
+                    carRecorrente();
+                }
+                if (caractereRecFim.length == strVetor.length) {
+                    carMesmaQuant();   
+                }
+            }
+        }    
+        function carRecorrente() {
+            document.getElementById("recorrenteVisor").value = caractereRecFim;
+        }
+        function carMesmaQuant() {
+            document.getElementById("recorrenteVisor").value = "Carateres tem a mesma quantidade";
+        }
+            
+      
+
+    /*    
+    }
+                }
+                while (i+1 != strNatural.length);
+                simPalindromo();
+            }
+        }
+        function naoPalindromo() {
+            document.getElementById("palindromoMostrador").value = "não É PALÍNDROMO";
+            parar();
+        }
+        function simPalindromo() {
+            document.getElementById("palindromoMostrador").value = "É PALÍNDROMO";
+        }
+        function maisRecorrente() {
+            strAlfa = {
+                a:"", b:"", c:"", d:"", e:"", f:"", g:"", h:"", 
+                i:"", j:"", k:"", l:"", m:"", n:"", o:"", p:"", 
+                q:"", r:"", s:"", t:"", u:"", v:"", x:"", y:"", z:""
+            };
+            strDigi = document.getElementById("principalVisor").value;
+            strVetor = strDigi.split("");
+
+            for (i = 0; i < strVetor.length; i++) {
+                if (strVetor[i] == "a") {strAlfa.a++};
+                if (strVetor[i] == "b") {strAlfa.b++};
+                if (strVetor[i] == "c") {strAlfa.c++};
+                if (strVetor[i] == "d") {strAlfa.d++};
+                if (strVetor[i] == "e") {strAlfa.e++};
+                if (strVetor[i] == "f") {strAlfa.f++};
+                if (strVetor[i] == "g") {strAlfa.g++};
+                if (strVetor[i] == "h") {strAlfa.h++};
+                if (strVetor[i] == "i") {strAlfa.i++};
+                if (strVetor[i] == "j") {strAlfa.j++};
+                if (strVetor[i] == "k") {strAlfa.k++};
+                if (strVetor[i] == "l") {strAlfa.l++};
+                if (strVetor[i] == "m") {strAlfa.m++};
+                if (strVetor[i] == "n") {strAlfa.n++};
+                if (strVetor[i] == "o") {strAlfa.o++};
+                if (strVetor[i] == "p") {strAlfa.p++};
+                if (strVetor[i] == "q") {strAlfa.q++};
+                if (strVetor[i] == "r") {strAlfa.r++};
+                if (strVetor[i] == "s") {strAlfa.s++};
+                if (strVetor[i] == "t") {strAlfa.t++};
+                if (strVetor[i] == "u") {strAlfa.u++};
+                if (strVetor[i] == "v") {strAlfa.v++};
+                if (strVetor[i] == "x") {strAlfa.x++};
+                if (strVetor[i] == "y") {strAlfa.y++};
+                if (strVetor[i] == "z") {strAlfa.z++};
+            }
+            for (var prop in strAlfa) {
+                max = -Infinity;
+                console.log(Math.max(strAlfa[prop])); /*
+                
+        }
+
+            /*
+            if (strVetor[i] == strVetor[i]) {strVetor.splice(i, 1); aa.push(strVetor[i]); aLengths = aa.length;}
+            for (j = 0; j < strDigi.length; j++) {
+                for (i = 0; i < strDigi.length; i++) {
+                    strRec = strDigi.match(/a/g);
+                    alfa.push(strRec[i]);
+                    quant = alfa.length;
+                }
+            }
+            elementoCode.push(strRec[1]);
+            elementoCode.push(quant);
+            code.push(elementoCode);
+            document.getElementById("recorrenteVisor").value = code;*/
+        /*
+        /*
+        if ((strNatural[i] == strNatural[strNatural.length-c]) == false) {
+        }
+        if ((strNatural[i] == strNatural[strNatural.length-c]) == false) {
+                            naoPalindromo();
+        }
+        if ((strNatural[i] == strNatural[strNatural.length-c]) == true) {
+                            simPalindromo();
+        }
+        /*
+        function palindromo() {
+            if (strDigi == strFinal) {
+                alert("É palíndromo!");
+            }
+            else {
+                alert("NÃO é palíndromo!");
+            }
+        }
+        */
+    </script>
+</body>
+</html>
